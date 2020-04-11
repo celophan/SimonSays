@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var cardsChosen = []
     var cardsChosenId = []
     var cardsWon = []
+    resultDisplay.textContent = cardsWon.length
 
     function createBoard() {
         for (let i = 0; i < cardArray.length; i++) {
@@ -131,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen = []
         cardsChosenId = []
         cardsWon = []
-        winningTitle.textContent = "SCORE : "
         cardArray.sort(() => 0.5 - Math.random())
+        resultDisplay.textContent = cardsWon.length
+        winningTitle.textContent = ''
         var cards = document.querySelectorAll('img')
         for (let i = 0; i < cardArray.length; i++) {
             cards[i].setAttribute('src', 'img/pokeball.png')

@@ -272,3 +272,8 @@ a:hover:after  {
   height: 120%;
   z-index: -1;
 }
+
+#title {
+  padding: 0 !important;
+  margin: 0 !important;
+}
