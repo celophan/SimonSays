@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDisplay = document.querySelector('#result')
     const winningTitle = document.querySelector('#title')
     const resetButton = document.querySelector("#reset")
-    var imgs = document.images;
     var cardsChosen = []
     var cardsChosenId = []
     var cardsWon = []
@@ -91,10 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         var cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
-        if (cardsChosen[0] === cardsChosen[1]) {
+        if (cardsChosen[0] === cardsChosen[1] && cardsChosenId[0] != cardsChosenId[1]) {
             // alert('You found a match!')
             cards[optionOneId].setAttribute('src', 'img/blank.png')
+            cards[optionOneId].style.pointerEvents = "none"
             cards[optionTwoId].setAttribute('src', 'img/blank.png')
+            cards[optionTwoId].style.pointerEvents = "none"
             cardsWon.push(cardsChosen)
         } else {            
             cards[optionOneId].setAttribute('src', 'img/pokeball.png')
@@ -119,9 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else
             this.className = "flip1";
         this.setAttribute('src', cardArray[cardId].img)
+        
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)      
         }
+        
     }
 
     function reset() {
