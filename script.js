@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen = []
         cardsChosenId = []
         cardsWon = []
+        winningTitle.textContent = "SCORE : "
         cardArray.sort(() => 0.5 - Math.random())
         var cards = document.querySelectorAll('img')
         for (let i = 0; i < cardArray.length; i++) {
