@@ -128,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsChosen.length === 2) {
             document.getElementsByTagName("BODY")[0].style.pointerEvents = "none"
             setTimeout(checkForMatch, 500)
-            
         }
     }
 
