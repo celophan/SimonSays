@@ -88,23 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkForMatch() {
+        
         var cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1] && cardsChosenId[0] != cardsChosenId[1]) {
-            // alert('You found a match!')
             cards[optionOneId].setAttribute('src', 'img/blank.png')
-            cards[optionOneId].style.pointerEvents = "none"
+            //cards[optionOneId].style.pointerEvents = "none"
+            cards[optionOneId].className = '';
             cards[optionTwoId].setAttribute('src', 'img/blank.png')
-            cards[optionTwoId].style.pointerEvents = "none"
+            //cards[optionTwoId].style.pointerEvents = "none"
+            cards[optionTwoId].className = '';
             cardsWon.push(cardsChosen)
         } else {            
             cards[optionOneId].setAttribute('src', 'img/pokeball.png')
+            cards[optionOneId].className = '';
             cards[optionTwoId].setAttribute('src', 'img/pokeball.png')
-            // alert('Nope.')
+            cards[optionTwoId].className = '';
         }
         cardsChosen = []
         cardsChosenId = []
+        document.getElementsByTagName("BODY")[0].style.pointerEvents = ""
         resultDisplay.textContent = cardsWon.length
         if (cardsWon.length === cardArray.length/2) {
             resultDisplay.textContent = ''
@@ -121,11 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else
             this.className = "flip1";
         this.setAttribute('src', cardArray[cardId].img)
-        
         if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 500)      
+            document.getElementsByTagName("BODY")[0].style.pointerEvents = "none"
+            setTimeout(checkForMatch, 500)
+            
         }
-        
     }
 
     function reset() {
