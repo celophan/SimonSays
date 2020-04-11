@@ -132,9 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosenId = []
         cardsWon = []
         cardArray.sort(() => 0.5 - Math.random())
+        var cards = document.querySelectorAll('img')
         for (let i = 0; i < cardArray.length; i++) {
-            var cards = document.querySelectorAll('img')
             cards[i].setAttribute('src', 'img/pokeball.png')
+            cards[i].style.pointerEvents = ""
         }
         
     }
