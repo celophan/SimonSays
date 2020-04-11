@@ -1,3 +1,7 @@
+:root {
+  --red: rgb(249, 51, 24);
+}
+
 ::-webkit-scrollbar {
   background-color: #121415;
   color: #ccc8bf;
@@ -23,16 +27,17 @@
 }
 
 :focus {
-  outline: 2px solid #189642;
-  outline-offset: 2px;
+  outline: none !important;
+  /* outline-offset: 2px;
   -webkit-transition: all 100ms ease-in-out;
   -o-transition: all 100ms ease-in-out;
-  transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out; */
 }
 
 html,
 body {
   height: 100%;
+  color: white;
 }
 
 body {
@@ -44,28 +49,52 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #141414;
+  /*justify-content: center;*/
+  align-items: center;
 }
 
-.content {
+main {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.footer {
+.grid {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 420px;
+  border: 1px solid var(--red);
+}
+
+.grid img {
+  cursor: pointer;
+  margin: 0 auto;
+  transition: all .3s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+footer {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   background-color: black;
-  color: white;
   letter-spacing: .1rem;
   text-align: center;
   padding: 1em;
+  width: 100%;
 }
 
 
 a {
     position: relative;
-    color: green;
+    color: var(--red);
     text-decoration: none;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -79,7 +108,7 @@ a:after {
     left: 0;
     width: 98%;
     height: 1px;
-    background: green;
+    background: var(--red);
     opacity: 0;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
@@ -87,7 +116,7 @@ a:after {
 }
 
 a:visited {
-    color: green;
+    color: var(--red);
 }
 
 a:hover {
@@ -97,4 +126,73 @@ a:hover {
 a:hover:after  {
     opacity: 1;
 }
+
+.flip1 {animation: spin-cat-1 .2s;}
+.flip2 {animation: spin-cat-2 .2s;}
+@keyframes spin-cat-1 {50%{transform:rotateY(180deg);}}
+@keyframes spin-cat-2 {50%{transform:rotateY(180deg);}}
+
+#reset {
+  border: 0;
+  border-radius: 0.25rem;
+  background: var(--red);
+  color: white;
+  font-family: -system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  position: relative;
+}
+
+#reset:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(249, 51, 24, 0.288);
+  border-radius: .5rem;
+  opacity: 0;
+  transition: all .115s ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+#reset:hover:before {
+  opacity: 1;
+  width: 110%;
+  height: 140%;
+  z-index: -1;
+}
+
+#reset:active:before {
+  opacity: 1;
+  width: 105%;
+  height: 120%;
+  z-index: -1;
+}
+
+/* .flip {
+  -webkit-animation-name: cssAnimation;
+  -webkit-animation-duration:3s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes cssAnimation {
+  from {
+    -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(100px);
+  }
+  to {
+    -webkit-transform: rotate(0deg) scale(2) skew(0deg) translate(100px);
+  }
+} */
+
 
