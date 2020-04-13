@@ -15,8 +15,7 @@ I use these :
 document.addEventListener('DOMContentLoaded', () => {
 
     // card options
-    const cardArray = [
-        {
+    const cardArray = [{
             name: 'blastoise',
             img: 'img/blastoise.png'
         },
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'cloyster',
             img: 'img/cloyster.png'
-        }, 
+        },
         {
             name: 'dragonair',
             img: 'img/dragonair.png'
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: 'cloyster',
             img: 'img/cloyster.png'
-        }, 
+        },
         {
             name: 'dragonair',
             img: 'img/dragonair.png'
@@ -69,12 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     cardArray.sort(() => 0.5 - Math.random())
 
     const grid = document.querySelector('.grid')
+    const comptDisplay = document.querySelector('#compt')
     const resultDisplay = document.querySelector('#result')
     const winningTitle = document.querySelector('#title')
     const resetButton = document.querySelector("#reset")
+    var compt = 0
     var cardsChosen = []
     var cardsChosenId = []
     var cardsWon = []
+    comptDisplay.textContent = compt
     resultDisplay.textContent = cardsWon.length
 
     function createBoard() {
@@ -88,19 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkForMatch() {
-        
+
         var cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1] && cardsChosenId[0] != cardsChosenId[1]) {
             cards[optionOneId].setAttribute('src', 'img/blank.png')
-            //cards[optionOneId].style.pointerEvents = "none"
+                //cards[optionOneId].style.pointerEvents = "none"
             cards[optionOneId].className = '';
             cards[optionTwoId].setAttribute('src', 'img/blank.png')
-            //cards[optionTwoId].style.pointerEvents = "none"
+                //cards[optionTwoId].style.pointerEvents = "none"
             cards[optionTwoId].className = '';
             cardsWon.push(cardsChosen)
-        } else {            
+        } else {
             cards[optionOneId].setAttribute('src', 'img/pokeball.png')
             cards[optionOneId].className = '';
             cards[optionTwoId].setAttribute('src', 'img/pokeball.png')
@@ -109,18 +111,19 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen = []
         cardsChosenId = []
         document.getElementsByTagName("BODY")[0].style.pointerEvents = ""
+        comptDisplay.textContent = compt += 1
         resultDisplay.textContent = cardsWon.length
-        if (cardsWon.length === cardArray.length/2) {
+        if (cardsWon.length === cardArray.length / 2) {
             resultDisplay.textContent = ''
             winningTitle.textContent = 'Congratulations, you won !'
         }
     }
-    
+
     function flipCard() {
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
-        if(this.className == "flip1")
+        if (this.className == "flip1")
             this.className = "flip2";
         else
             this.className = "flip1";
@@ -132,10 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function reset() {
+        compt = 0
         cardsChosen = []
         cardsChosenId = []
         cardsWon = []
         cardArray.sort(() => 0.5 - Math.random())
+        comptDisplay.textContent = compt
         resultDisplay.textContent = cardsWon.length
         winningTitle.textContent = ''
         var cards = document.querySelectorAll('img')
@@ -143,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[i].setAttribute('src', 'img/pokeball.png')
             cards[i].style.pointerEvents = ""
         }
-        
+
     }
 
     resetButton.addEventListener('click', reset)
