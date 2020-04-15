@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         comptDisplay.textContent = compt += 1
         resultDisplay.textContent = cardsWon.length
         if (cardsWon.length === cardArray.length / 2) {
-            resultDisplay.textContent = ''
+            resultDisplay.textContent = cardsWon.length
             winningTitle.textContent = 'Congratulations, you won !'
         }
     }
